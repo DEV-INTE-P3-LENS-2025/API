@@ -33,21 +33,6 @@ aside {
     text-align: center;
 }
 
-.menu-item1 {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 20px 20px;
-    font-size: 25px;
-    background-color:  rgba(0, 0, 0, 0.164);
-    cursor: pointer;
-}
-
-
-.menu-item1:hover {
-    background-color: #ffffff;
-    color: #3700ff8e;
-}
 
 .menu-item {
     display: flex;
@@ -65,6 +50,18 @@ aside {
     color: #3700ff8e;
 }
 
+.menu-item:hover img {
+    filter: brightness(50%);
+    filter: grayscale(0) brightness(1);
+}
+
+
+.clr {
+    filter: grayscale(1) brightness(8);
+
+}
+
+
 .menu-item2 {
     display: flex;
     justify-content: center;
@@ -80,7 +77,7 @@ aside {
     flex-wrap: wrap;
     gap:2.5%;
     margin-left: 15%;
-    overflow: auto;
+    overflow: auto;/* pour mettre le scroll */
 }
 
 .card {
@@ -93,9 +90,11 @@ aside {
     margin-top: 2.5%;
 }
 
+
 .tlp, .icn {
     filter: invert(50%);
 }
+
 
 .amnt {
     text-align: center;
@@ -117,10 +116,9 @@ aside {
     display: flex;
     justify-content: center;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
     margin-top: 20px;
 }
-
 
 .place {
     display: flex;

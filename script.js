@@ -17,9 +17,26 @@ function filter(gender) {
 }
 
 // Ajouter les écouteurs d'événements pour les boutons de filtrage par genre
-document.querySelector(".all").addEventListener("click", () => filter('all'));
-document.querySelector(".male").addEventListener("click", () => filter('male'));
-document.querySelector(".female").addEventListener("click", () => filter('female'));
+document.querySelectorAll(".menu-item")[0].addEventListener("click", () => filter('all'));
+document.querySelectorAll(".menu-item")[1].addEventListener("click", () => filter('male'));
+document.querySelectorAll(".menu-item")[2].addEventListener("click", () => filter('female'));
+
+// Fonction pour TRIER par montant
+function sortamount() {
+    users.sort((a, b) => {
+        return b.amount - a.amount;  
+    });
+    
+    main.textContent = "";
+    
+    users.forEach(user => {
+        const card = createusercard(user);
+        main.appendChild(card);
+    });
+}
+
+document.querySelectorAll(".menu-item")[3].addEventListener("click", sortamount);
+
 
 // Fonction pour TRIER par nom
 function sort() {
@@ -38,27 +55,8 @@ function sort() {
         main.appendChild(card);
     });
 }
-
 // Ajouter l'écouteur d'événements pour le bouton de tri
-document.querySelector(".A").addEventListener("click", sort);
-
-
-// Fonction pour TRIER par montant
-function sortamount() {
-    users.sort((a, b) => {
-        return b.amount - a.amount;  
-    });
-    
-    main.textContent = "";
-    
-    users.forEach(user => {
-        const card = createusercard(user);
-        main.appendChild(card);
-    });
-}
-
-document.querySelector(".amount").addEventListener("click", sortamount);
-
+document.querySelectorAll(".menu-item")[4].addEventListener("click", sort);
 
 // Fonction pour récupérer les données de l'API
 async function getdata(url, donnees = {}) {
