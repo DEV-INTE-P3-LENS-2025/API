@@ -2,6 +2,30 @@ const url = "https://randomuser.me/api/?results=50";
 const main = document.querySelector(".main");
 let users = [];
 
+//on a crée le const pour qu'on puisse chercher le input et on l'a appelé searchinput
+const searchinput = document.getElementById("searchbar");
+const searchbtn = document.querySelector(".btn");
+
+//on a crée la function et ca se lit comme ca:
+searchbtn.addEventListener("click", function () { //a notre input q'on l'appele ici searchinput on lui ajoute un event listener que (quand on ecrie dans l'input la function s'execute qui est ...)
+    const valeur = searchinput.value.toLowerCase(); //on a crée une const valeur qui est CE QUE JE TAPE DANS L'INPUT ET CE que j'ai tapé est la valeur
+
+
+    const filteredusers = users.filter(user => {//on a crée une const filteredusers qui est les users filtrés = “Parmi tous les users, je prends chaque utilisateur un par un (appelé user), et je garde seulement ceux pour lesquels le test dans la fonction est vrai.”
+        const fullname = (user.name.first + " " + user.name.last).toLowerCase();//on a crée une const fullname qui est le nom et prenom de l'utilisateur 
+        return fullname.includes(valeur);//return(la sortie de la function c'est) si dans le fullname il y a la valeur que je tape dans l'input
+    });
+
+//vider le conteneur principal
+    main.textContent = "";
+
+//afficher les users filtrés:
+    filteredusers.forEach(user => {//pour chaque user de filteredusers  
+        const card = createusercard(user);//on crée une const card qui est la carte de l'utilisateur
+        main.appendChild(card);//on ajoute la carte de l'utilisateur dans le conteneur principal
+    })
+});
+
 // Fonction pour FILTRER par genre
 function filter(gender) {
     // Vider le conteneur principal
